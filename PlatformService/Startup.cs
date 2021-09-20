@@ -30,7 +30,7 @@ namespace PlatformService
     {
       services.AddDbContext<AppDbContext>(opts =>
         opts.UseInMemoryDatabase("InMem"));
-        services.AddScoped<IPlatformRepo,PlatformRepo>();
+      services.AddScoped<IPlatformRepo, PlatformRepo>();
       services.AddControllers();
       services.AddSwaggerGen(c =>
       {
@@ -59,6 +59,8 @@ namespace PlatformService
       {
         endpoints.MapControllers();
       });
+
+      Seeder.Seed(app);
     }
   }
 }
