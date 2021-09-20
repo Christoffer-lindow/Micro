@@ -25,11 +25,11 @@ namespace PlatformService
 
     public IConfiguration Configuration { get; }
 
-
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddDbContext<AppDbContext>(opts =>
         opts.UseInMemoryDatabase("InMem"));
+      services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
       services.AddScoped<IPlatformRepo, PlatformRepo>();
       services.AddControllers();
       services.AddSwaggerGen(c =>
